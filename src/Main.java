@@ -256,7 +256,7 @@ public class Main {
         if (summ <= 0) {
             throw new InvalidTransferAmountException();
         }
-        if (fromAcc.getBalance() > summ) {
+        if (fromAcc.getBalance() >= summ) {
             fromAcc.withdraw(summ);
             toAcc.deposit(summ);
         } else {
