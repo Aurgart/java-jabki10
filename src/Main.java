@@ -9,7 +9,7 @@ import java.util.HashMap;
 import java.util.List;
 
 public class Main {
-    // логины
+    // логины для теста
     static HashMap<String, String> logins = new HashMap<>();
     // продукты
     static List<Item> itemList = new ArrayList<>();
