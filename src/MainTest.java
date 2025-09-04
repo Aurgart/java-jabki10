@@ -17,9 +17,9 @@ class MainTest {
     // Задание 6
     @Test
     public void testGetItem() throws ItemNotFoundException {
-        Main.itemList.add(new Item("Тапки мажора", "tapok"));
-        Main.itemList.add(new Item("Вода нарзан", "water"));
-        Main.itemList.add(new Item("Балтика 9", "pivko"));
+        Main.itemMap.put("tapok", new Item("Тапки мажора", "tapok"));
+        Main.itemMap.put("water", new Item("Вода нарзан", 5, "water", 90));
+        Main.itemMap.put("pivko", new Item("Балтика 9", 3, "pivko", 120));
         assertEquals(Main.getItem("pivko").getItemName(), "Балтика 9");
         ItemNotFoundException newExcp = assertThrows(ItemNotFoundException.class, () -> Main.getItem("eda"));
         assertTrue(newExcp.getMessage().contains("Нет такого товара"));
@@ -28,9 +28,9 @@ class MainTest {
     // Задание 10
     @Test
     public void testRateProduct() throws InvalidRatingException {
-        Main.itemList.add(new Item("Тапки мажора", "tapok"));
-        Main.itemList.add(new Item("Вода нарзан", 5, "water", 90));
-        Main.itemList.add(new Item("Балтика 9", 3, "pivko", 120));
+        Main.itemMap.put("tapok", new Item("Тапки мажора", "tapok"));
+        Main.itemMap.put("water", new Item("Вода нарзан", 5, "water", 90));
+        Main.itemMap.put("pivko", new Item("Балтика 9", 3, "pivko", 120));
         Main.rateProduct("4", "tapok");
         assertEquals(Main.getItem("tapok").getRating(), 4);
         InvalidRatingException newExcp = assertThrows(InvalidRatingException.class, () -> Main.rateProduct("6", "tapok"));

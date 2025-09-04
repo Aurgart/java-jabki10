@@ -12,7 +12,7 @@ public class Main {
     // логины
     static HashMap<String, String> logins = new HashMap<>();
     // продукты
-    static List<Item> itemList = new ArrayList<>();
+    static HashMap<String, Item> itemMap = new HashMap<>();
 
     public static void main(String[] args) {
         // Задание 1
@@ -191,12 +191,16 @@ public class Main {
      */
     public static Item getItem(String code) throws ItemNotFoundException {
         //Item result = new Item();
-        for (Item i : itemList) {
+        /*for (Item i : itemList) {
             if (i.getItemCode() == code) {
                 return i;
             }
+        }*/
+        if (!itemMap.containsKey(code)) {
+            throw new ItemNotFoundException();
+        } else {
+            return itemMap.get(code);
         }
-        throw new ItemNotFoundException();
     }
 
     /*
@@ -226,10 +230,8 @@ public class Main {
         if (rate > 5 || rate < 1) {
             throw new InvalidRatingException();
         }
-        for (Item i : itemList) {
-            if (i.getItemCode() == code) {
-                i.setRating(rate);
-            }
+        if (itemMap.containsKey(code)) {
+            itemMap.get(code).setRating(rate);
         }
     }
 
